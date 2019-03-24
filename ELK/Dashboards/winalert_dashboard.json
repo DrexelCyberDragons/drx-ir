@@ -1,0 +1,19 @@
+[
+  {
+    "_id": "AWiCHR50zAs7DRJNDz0e",
+    "_type": "dashboard",
+    "_source": {
+      "title": "WinAlert",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[\n  {\n    \"col\": 1,\n    \"columns\": [\n      \"event_data.Image\"\n    ],\n    \"id\": \"AWiCHFrqzAs7DRJNDzzx\",\n    \"panelIndex\": 1,\n    \"row\": 4,\n    \"size_x\": 6,\n    \"size_y\": 3,\n    \"sort\": [\n      \"@timestamp\",\n      \"desc\"\n    ],\n    \"type\": \"search\"\n  },\n  {\n    \"col\": 1,\n    \"columns\": [\n      \"event_data.Image\",\n      \"event_data.User\",\n      \"event_data.ParentImage\"\n    ],\n    \"id\": \"AWiCNdBhzAs7DRJND0aG\",\n    \"panelIndex\": 2,\n    \"row\": 1,\n    \"size_x\": 6,\n    \"size_y\": 3,\n    \"sort\": [\n      \"@timestamp\",\n      \"desc\"\n    ],\n    \"type\": \"search\"\n  },\n  {\n    \"col\": 1,\n    \"columns\": [\n      \"event_data.IpAddress\",\n      \"event_data.TargetUserName\",\n      \"beat.hostname\"\n    ],\n    \"id\": \"AWiCdTTRzAs7DRJND1uN\",\n    \"panelIndex\": 3,\n    \"row\": 7,\n    \"size_x\": 6,\n    \"size_y\": 3,\n    \"sort\": [\n      \"@timestamp\",\n      \"desc\"\n    ],\n    \"type\": \"search\"\n  },\n  {\n    \"col\": 7,\n    \"columns\": [\n      \"beat.hostname\"\n    ],\n    \"id\": \"AWiCTkPmzAs7DRJND02o\",\n    \"panelIndex\": 4,\n    \"row\": 4,\n    \"size_x\": 6,\n    \"size_y\": 3,\n    \"sort\": [\n      \"@timestamp\",\n      \"desc\"\n    ],\n    \"type\": \"search\"\n  },\n  {\n    \"col\": 7,\n    \"columns\": [\n      \"event_data.TargetFilename\",\n      \"event_data.Image\"\n    ],\n    \"id\": \"AWiWfW7VzAs7DRJNHmru\",\n    \"panelIndex\": 5,\n    \"row\": 1,\n    \"size_x\": 6,\n    \"size_y\": 3,\n    \"sort\": [\n      \"@timestamp\",\n      \"desc\"\n    ],\n    \"type\": \"search\"\n  },\n  {\n    \"col\": 7,\n    \"columns\": [\n      \"event_data.Image\",\n      \"event_data.DestinationIp\"\n    ],\n    \"id\": \"AWiWnM_6zAs7DRJNHof1\",\n    \"panelIndex\": 6,\n    \"row\": 7,\n    \"size_x\": 6,\n    \"size_y\": 3,\n    \"sort\": [\n      \"@timestamp\",\n      \"desc\"\n    ],\n    \"type\": \"search\"\n  },\n  {\n    \"col\": 1,\n    \"columns\": [\n      \"event_data.TargetObject\"\n    ],\n    \"id\": \"AWimcUyuzAs7DRJNNRIt\",\n    \"panelIndex\": 7,\n    \"row\": 10,\n    \"size_x\": 6,\n    \"size_y\": 3,\n    \"sort\": [\n      \"@timestamp\",\n      \"desc\"\n    ],\n    \"type\": \"search\"\n  },\n  {\n    \"col\": 7,\n    \"columns\": [\n      \"event_data.SourceIp\",\n      \"event_data.DestinationIp\",\n      \"event_data.Image\",\n      \"event_id\"\n    ],\n    \"id\": \"AWhyzoI1y8Hraoti9rOz\",\n    \"panelIndex\": 8,\n    \"row\": 10,\n    \"size_x\": 6,\n    \"size_y\": 3,\n    \"sort\": [\n      \"event_data.Image\",\n      \"asc\"\n    ],\n    \"type\": \"search\"\n  },\n  {\n    \"col\": 1,\n    \"columns\": [\n      \"event_data.TaskName\",\n      \"computer_name\"\n    ],\n    \"id\": \"AWimkBK3cJsr2FYn2EIa\",\n    \"panelIndex\": 9,\n    \"row\": 13,\n    \"size_x\": 6,\n    \"size_y\": 3,\n    \"sort\": [\n      \"@timestamp\",\n      \"desc\"\n    ],\n    \"type\": \"search\"\n  },\n  {\n    \"size_x\": 6,\n    \"size_y\": 3,\n    \"panelIndex\": 10,\n    \"type\": \"search\",\n    \"id\": \"AWiq_qQLcJsr2FYn3TAm\",\n    \"col\": 7,\n    \"row\": 13,\n    \"columns\": [\n      \"event_data.SamAccountName\",\n      \"event_data.TargetUserName\",\n      \"message\"\n    ],\n    \"sort\": [\n      \"@timestamp\",\n      \"desc\"\n    ]\n  }\n]",
+      "optionsJSON": "{\n  \"darkTheme\": false\n}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\n  \"filter\": [\n    {\n      \"query\": {\n        \"query_string\": {\n          \"analyze_wildcard\": true,\n          \"query\": \"\"\n        }\n      }\n    }\n  ],\n  \"highlightAll\": true,\n  \"version\": true\n}"
+      }
+    }
+  }
+]

@@ -1,0 +1,37 @@
+winlogbeat.event_logs:
+  - name: Application
+  - name: Security
+  - name: System
+  - name: Microsoft-Windows-Sysmon/Operational
+  - name: Windows PowerShell
+  - name: Microsoft-Windows-PowerShell/Operational
+  
+setup.template.settings:
+  index.number_of_shards: 3
+  
+#tags: ["test"]
+
+setup.kibana:
+  host: "https://<host>:<port>"
+  protocol: https
+  username: ""
+  password: ""
+  ssl.certificate_authorities: ["<path to root CA cert>"]
+  ssl.certificate: "<path to ssl cert>"
+  ssl.key: "<path to key>"
+
+output.elasticsearch:
+  # Array of hosts to connect to.
+  hosts: ["https://<host>:<port>"]
+
+  # Optional protocol and basic auth credentials.
+  protocol: "https"
+  username: ""
+  password: ""
+  ssl.certificate_authorities: ["<path to root CA cert>"]
+  ssl.certificate: "<path to ssl cert>"
+  ssl.key: "<path to key>"
+  
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~

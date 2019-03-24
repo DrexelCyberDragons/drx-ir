@@ -1,0 +1,231 @@
+[
+  {
+    "_id": "AWiCdTTRzAs7DRJND1uN",
+    "_type": "search",
+    "_source": {
+      "title": "Failed Logons",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "event_data.IpAddress",
+        "event_data.TargetUserName",
+        "beat.hostname"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"match_all\":{}},\"filter\":[{\"meta\":{\"negate\":false,\"index\":\"winlogbeat-*\",\"type\":\"phrase\",\"key\":\"log_name\",\"value\":\"Security\",\"disabled\":false,\"alias\":null},\"query\":{\"match\":{\"log_name\":{\"query\":\"Security\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}},{\"meta\":{\"index\":\"winlogbeat-*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"event_id\",\"value\":\"4,625\"},\"query\":{\"match\":{\"event_id\":{\"query\":4625,\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AWimkBK3cJsr2FYn2EIa",
+    "_type": "search",
+    "_source": {
+      "title": "Service/Task Creations",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "event_data.TaskName",
+        "computer_name"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"match_all\":{}},\"filter\":[{\"meta\":{\"index\":\"winlogbeat-*\",\"type\":\"phrases\",\"key\":\"event_id\",\"value\":\"4,697, 4,698\",\"params\":[\"4697\",\"4698\"],\"negate\":false,\"disabled\":false,\"alias\":null},\"query\":{\"bool\":{\"should\":[{\"match_phrase\":{\"event_id\":\"4697\"}},{\"match_phrase\":{\"event_id\":\"4698\"}}],\"minimum_should_match\":1}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AWimcUyuzAs7DRJNNRIt",
+    "_type": "search",
+    "_source": {
+      "title": "Registry Edits",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "event_data.TargetObject"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"query_string\":{\"query\":\"(*run* && -runasppl) || *winlogon* || *osk*\",\"analyze_wildcard\":true}},\"filter\":[{\"meta\":{\"index\":\"winlogbeat-*\",\"type\":\"phrases\",\"key\":\"event_id\",\"value\":\"12, 13, 14\",\"params\":[\"12\",\"13\",\"14\"],\"negate\":false,\"disabled\":false,\"alias\":null},\"query\":{\"bool\":{\"should\":[{\"match_phrase\":{\"event_id\":\"12\"}},{\"match_phrase\":{\"event_id\":\"13\"}},{\"match_phrase\":{\"event_id\":\"14\"}}],\"minimum_should_match\":1}},\"$state\":{\"store\":\"appState\"}},{\"meta\":{\"negate\":false,\"index\":\"winlogbeat-*\",\"type\":\"phrase\",\"key\":\"log_name\",\"value\":\"Microsoft-Windows-Sysmon/Operational\",\"disabled\":false,\"alias\":null},\"query\":{\"match\":{\"log_name\":{\"query\":\"Microsoft-Windows-Sysmon/Operational\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AWiWfW7VzAs7DRJNHmru",
+    "_type": "search",
+    "_source": {
+      "title": "Suspicious File Creates",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "event_data.TargetFilename",
+        "event_data.Image"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"query_string\":{\"query\":\"event_data.TargetFilename:(*.exe || *.hta || *.ps1 || *.psm1 || *.psd1 || *.dll)\",\"analyze_wildcard\":true}},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"winlogbeat-*\",\"key\":\"log_name\",\"negate\":false,\"type\":\"phrase\",\"value\":\"Microsoft-Windows-Sysmon/Operational\"},\"query\":{\"match\":{\"log_name\":{\"query\":\"Microsoft-Windows-Sysmon/Operational\",\"type\":\"phrase\"}}}},{\"meta\":{\"index\":\"winlogbeat-*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"event_id\",\"value\":\"11\"},\"query\":{\"match\":{\"event_id\":{\"query\":11,\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AWiWnM_6zAs7DRJNHof1",
+    "_type": "search",
+    "_source": {
+      "title": "Suspicious Network Connections",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "event_data.Image",
+        "event_data.DestinationIp"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"match_all\":{}},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"winlogbeat-*\",\"key\":\"log_name\",\"negate\":false,\"type\":\"phrase\",\"value\":\"Microsoft-Windows-Sysmon/Operational\"},\"query\":{\"match\":{\"log_name\":{\"query\":\"Microsoft-Windows-Sysmon/Operational\",\"type\":\"phrase\"}}}},{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"winlogbeat-*\",\"key\":\"event_id\",\"negate\":false,\"type\":\"phrase\",\"value\":\"3\"},\"query\":{\"match\":{\"event_id\":{\"query\":3,\"type\":\"phrase\"}}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AWhyzoI1y8Hraoti9rOz",
+    "_type": "search",
+    "_source": {
+      "title": "Suspicious PowerShell",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "event_data.CommandLine"
+      ],
+      "sort": [
+        "event_data.Image",
+        "asc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"query_string\":{\"query\":\"powershell && event_data.CommandLine:(*iex* || *enc* || *nop* || *hidden* || *web* || *nologo*)\",\"analyze_wildcard\":true}},\"filter\":[{\"meta\":{\"negate\":false,\"index\":\"winlogbeat-*\",\"type\":\"phrase\",\"key\":\"log_name\",\"value\":\"Microsoft-Windows-Sysmon/Operational\",\"disabled\":false,\"alias\":null},\"query\":{\"match\":{\"log_name\":{\"query\":\"Microsoft-Windows-Sysmon/Operational\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}},{\"meta\":{\"negate\":false,\"index\":\"winlogbeat-*\",\"type\":\"phrase\",\"key\":\"event_id\",\"value\":\"1\",\"disabled\":false,\"alias\":null},\"query\":{\"match\":{\"event_id\":{\"query\":1,\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AWiCNdBhzAs7DRJND0aG",
+    "_type": "search",
+    "_source": {
+      "title": "Suspicious Processes",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "event_data.Image",
+        "event_data.User",
+        "event_data.ParentImage"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"query_string\":{\"query\":\"*mshta* || *csc* || *wscript* || *bitsadmin* || *certutil* || *msbuild* || (*reg* && -acregl.exe)\",\"analyze_wildcard\":true}},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"winlogbeat-*\",\"key\":\"log_name\",\"negate\":false,\"type\":\"phrase\",\"value\":\"Microsoft-Windows-Sysmon/Operational\"},\"query\":{\"match\":{\"log_name\":{\"query\":\"Microsoft-Windows-Sysmon/Operational\",\"type\":\"phrase\"}}}},{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"winlogbeat-*\",\"key\":\"event_id\",\"negate\":false,\"type\":\"phrase\",\"value\":\"1\"},\"query\":{\"match\":{\"event_id\":{\"query\":1,\"type\":\"phrase\"}}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AWiB2semzAs7DRJNDw_S",
+    "_type": "search",
+    "_source": {
+      "title": "Sysmon Network Logs",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"match_all\":{}},\"filter\":[{\"meta\":{\"index\":\"winlogbeat-*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"event_id\",\"value\":\"3\"},\"query\":{\"match\":{\"event_id\":{\"query\":3,\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AWiCTkPmzAs7DRJND02o",
+    "_type": "search",
+    "_source": {
+      "title": "Sysmon Service Stopped",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "beat.hostname"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"match_all\":{}},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"winlogbeat-*\",\"key\":\"log_name\",\"negate\":false,\"type\":\"phrase\",\"value\":\"Microsoft-Windows-Sysmon/Operational\"},\"query\":{\"match\":{\"log_name\":{\"query\":\"Microsoft-Windows-Sysmon/Operational\",\"type\":\"phrase\"}}}},{\"meta\":{\"index\":\"winlogbeat-*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"event_data.State\",\"value\":\"Stopped\"},\"query\":{\"match\":{\"event_data.State\":{\"query\":\"Stopped\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}},{\"meta\":{\"negate\":false,\"index\":\"winlogbeat-*\",\"type\":\"phrase\",\"key\":\"event_id\",\"value\":\"4\",\"disabled\":false,\"alias\":null},\"query\":{\"match\":{\"event_id\":{\"query\":4,\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AWiCHFrqzAs7DRJNDzzx",
+    "_type": "search",
+    "_source": {
+      "title": "Unmanaged PowerShell",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "event_data.Image"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"match_all\":{}},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"winlogbeat-*\",\"key\":\"log_name\",\"negate\":false,\"type\":\"phrase\",\"value\":\"Microsoft-Windows-Sysmon/Operational\"},\"query\":{\"match\":{\"log_name\":{\"query\":\"Microsoft-Windows-Sysmon/Operational\",\"type\":\"phrase\"}}}},{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"winlogbeat-*\",\"key\":\"event_id\",\"negate\":false,\"type\":\"phrase\",\"value\":\"7\"},\"query\":{\"match\":{\"event_id\":{\"query\":7,\"type\":\"phrase\"}}}},{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"winlogbeat-*\",\"key\":\"event_data.Image\",\"negate\":true,\"type\":\"phrase\",\"value\":\"C:\\\\Windows\\\\Microsoft.NET\\\\Framework\\\\v4.0.30319\\\\mscorsvw.exe\"},\"query\":{\"match\":{\"event_data.Image\":{\"query\":\"C:\\\\Windows\\\\Microsoft.NET\\\\Framework\\\\v4.0.30319\\\\mscorsvw.exe\",\"type\":\"phrase\"}}}},{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"winlogbeat-*\",\"key\":\"event_data.Image\",\"negate\":true,\"type\":\"phrase\",\"value\":\"C:\\\\Windows\\\\Microsoft.NET\\\\Framework64\\\\v4.0.30319\\\\mscorsvw.exe\"},\"query\":{\"match\":{\"event_data.Image\":{\"query\":\"C:\\\\Windows\\\\Microsoft.NET\\\\Framework64\\\\v4.0.30319\\\\mscorsvw.exe\",\"type\":\"phrase\"}}}},{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"winlogbeat-*\",\"key\":\"event_data.Image\",\"negate\":true,\"type\":\"phrase\",\"value\":\"C:\\\\Windows\\\\System32\\\\ServerManager.exe\"},\"query\":{\"match\":{\"event_data.Image\":{\"query\":\"C:\\\\Windows\\\\System32\\\\ServerManager.exe\",\"type\":\"phrase\"}}}},{\"meta\":{\"negate\":true,\"index\":\"winlogbeat-*\",\"type\":\"phrase\",\"key\":\"event_data.Image\",\"value\":\"C:\\\\Windows\\\\System32\\\\wsmprovhost.exe\",\"disabled\":false,\"alias\":null},\"query\":{\"match\":{\"event_data.Image\":{\"query\":\"C:\\\\Windows\\\\System32\\\\wsmprovhost.exe\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AWiq_qQLcJsr2FYn3TAm",
+    "_type": "search",
+    "_source": {
+      "title": "User Modifications",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "event_data.SamAccountName",
+        "event_data.TargetUserName",
+        "message"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"match_all\":{}},\"filter\":[{\"meta\":{\"index\":\"winlogbeat-*\",\"type\":\"phrases\",\"key\":\"event_id\",\"value\":\"4,724, 4,726, 4,738, 4,720\",\"params\":[\"4724\",\"4726\",\"4738\",\"4720\"],\"negate\":false,\"disabled\":false,\"alias\":null},\"query\":{\"bool\":{\"should\":[{\"match_phrase\":{\"event_id\":\"4724\"}},{\"match_phrase\":{\"event_id\":\"4726\"}},{\"match_phrase\":{\"event_id\":\"4738\"}},{\"match_phrase\":{\"event_id\":\"4720\"}}],\"minimum_should_match\":1}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  }
+]

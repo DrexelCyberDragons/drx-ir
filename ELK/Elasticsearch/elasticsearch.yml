@@ -1,0 +1,17 @@
+network.host: 0.0.0.0
+http.port: 9200
+
+xpack.security.enabled: true
+xpack.license.self_generated.type: trial
+
+xpack.security:
+        http.ssl:
+                key: <path to elasticsearch configuration directory>/CERTIFICATE.key
+                certificate: <path to elasticsearch configuration directory>/CERTIFICATE.crt
+                certificate_authorities: ["<path to elasticsearch configuration directory>/rootCA.crt"]
+                enabled: true
+        transport.ssl:
+                key: <path to elasticsearch configuration directory>/CERTIFICATE.key
+                certificate: <path to elasticsearch configuration directory>/CERTIFICATE.crt
+                certificate_authorities: ["<path to elasticsearch configuration directory>/rootCA.crt"]
+                enabled: true

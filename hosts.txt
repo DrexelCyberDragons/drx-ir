@@ -1,4 +1,0 @@
-192.168.5.10:spaceforcex.net:u:p
-192.168.5.14:spaceforcex.net:u:p
-192.168.5.16:spaceforcex.net:u:p
-192.168.5.17:spaceforcex.net:u:p

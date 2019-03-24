@@ -1,0 +1,17 @@
+server.port: 5601
+server.host: 0.0.0.0
+
+elasticsearch.url: "https://localhost:9200"
+
+# use the default kibana user here
+elasticsearch.username: ""
+elasticsearch.password: ""
+
+server.ssl.enabled: true
+server.ssl.certificate: <path to kibana configuration directory>/CERTIFICATE.crt
+server.ssl.key: <path to kibana configuration directory>/CERTIFICATE.key
+server.ssl.certificateAuthorities: ["<path to kibana configuration directory>/rootCA.crt"]
+
+elasticsearch.ssl.certificate: <path to kibana configuration directory>/CERTIFICATE.crt
+elasticsearch.ssl.key: <path to kibana configuration directory>/CERTIFICATE.key
+elasticsearch.ssl.certificateAuthorities: ["<path to kibana configuration directory>/rootCA.crt"]
