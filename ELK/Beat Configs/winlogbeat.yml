@@ -21,10 +21,8 @@ setup.kibana:
   ssl.key: "<path to key>"
 
 output.elasticsearch:
-  # Array of hosts to connect to.
   hosts: ["https://<host>:<port>"]
 
-  # Optional protocol and basic auth credentials.
   protocol: "https"
   username: ""
   password: ""

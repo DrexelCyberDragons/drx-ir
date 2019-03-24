@@ -1,7 +1,4 @@
-# Requirements
-..* Elasticsearch version > 6.3
-
-# ELK Hardening with X-Pack
+# ELK (> 6.3) Hardening with X-Pack
 1. Generate an SSL certificate
 ```
 Openssl steps
@@ -36,23 +33,23 @@ DNS.1=CERTIFICATE
 IP=xxx.xxx.xxx.xxx
 ```
 2. Copy CERTIFICATE.crt, CERTIFICATE.key, and rootCA.crt to the directory where elasticsearch.yml is located.
-..* Most likely /etc/elasticsearch
+- Most likely /etc/elasticsearch
 3. Edit elasticsearch.yml to include the SSL certificate information, enable X-Pack security, and set the X-Pack license to trial.
 ```
 xpack.security.enabled: true
 xpack.license.self_generated.type: trial
 
 xpack.security:
-        http.ssl:
-                key: <path to elasticsearch configuration directory>/CERTIFICATE.key
-                certificate: <path to elasticsearch configuration directory>/CERTIFICATE.crt
-                certificate_authorities: ["<path to elasticsearch configuration directory>/rootCA.crt"]
-                enabled: true
-        transport.ssl:
-                key: <path to elasticsearch configuration directory>/CERTIFICATE.key
-                certificate: <path to elasticsearch configuration directory>/CERTIFICATE.crt
-                certificate_authorities: ["<path to elasticsearch configuration directory>/rootCA.crt"]
-                enabled: true
+  http.ssl:
+    key: <path to elasticsearch configuration directory>/CERTIFICATE.key
+    certificate: <path to elasticsearch configuration directory>/CERTIFICATE.crt
+    certificate_authorities: ["<path to elasticsearch configuration directory>/rootCA.crt"]
+    enabled: true
+  transport.ssl:
+    key: <path to elasticsearch configuration directory>/CERTIFICATE.key
+    certificate: <path to elasticsearch configuration directory>/CERTIFICATE.crt
+    certificate_authorities: ["<path to elasticsearch configuration directory>/rootCA.crt"]
+    enabled: true
 ```
 4. Restart Elasticsearch.
 5. Activate the trial license.
@@ -79,7 +76,44 @@ elasticsearch.ssl.certificateAuthorities: ["<path to kibana configuration direct
 ```
 8. Restart Kibana.
 
+# Winlogbeat Configuration Breakdown
+### Windows Event Logs to forward
+```
+winlogbeat.event_logs:
+  - name: Application
+  - name: Security
+  - name: System
+  - name: Microsoft-Windows-Sysmon/Operational
+  - name: Windows PowerShell
+  - name: Microsoft-Windows-PowerShell/Operational
+```
 
+### Kibana Setup (only required for initial dashboard setup)
+Note: The user must have the 'kibana_user' role assigned for dashboard setup.
+```
+setup.kibana:
+  host: "https://<host>:<port>"
+  protocol: https
+  username: ""
+  password: ""
+  ssl.certificate_authorities: ["<path to root CA cert>"]
+  ssl.certificate: "<path to ssl cert>"
+  ssl.key: "<path to key>"
+```
+
+### Elasticsearch
+Note: The user must have the remote_monitoring_agent role assigned.
+```
+output.elasticsearch:
+  hosts: ["https://<host>:<port>"]
+
+  protocol: "https"
+  username: ""
+  password: ""
+  ssl.certificate_authorities: ["<path to root CA cert>"]
+  ssl.certificate: "<path to ssl cert>"
+  ssl.key: "<path to key>"
+```
 
 Documentation to add:
 - Saved Searches
