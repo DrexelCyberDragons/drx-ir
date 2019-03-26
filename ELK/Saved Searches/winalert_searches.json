@@ -22,15 +22,15 @@
     }
   },
   {
-    "_id": "AWimkBK3cJsr2FYn2EIa",
+    "_id": "AWm7nkvTo3ZX3wbZBTAT",
     "_type": "search",
     "_source": {
-      "title": "Service/Task Creations",
+      "title": "Log Cleared",
       "description": "",
       "hits": 0,
       "columns": [
-        "event_data.TaskName",
-        "computer_name"
+        "host.name",
+        "message"
       ],
       "sort": [
         "@timestamp",
@@ -38,7 +38,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"match_all\":{}},\"filter\":[{\"meta\":{\"index\":\"winlogbeat-*\",\"type\":\"phrases\",\"key\":\"event_id\",\"value\":\"4,697, 4,698\",\"params\":[\"4697\",\"4698\"],\"negate\":false,\"disabled\":false,\"alias\":null},\"query\":{\"bool\":{\"should\":[{\"match_phrase\":{\"event_id\":\"4697\"}},{\"match_phrase\":{\"event_id\":\"4698\"}}],\"minimum_should_match\":1}},\"$state\":{\"store\":\"appState\"}}]}"
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"match_all\":{}},\"filter\":[{\"meta\":{\"index\":\"winlogbeat-*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"event_id\",\"value\":\"1,102\"},\"query\":{\"match\":{\"event_id\":{\"query\":1102,\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
       }
     }
   },
@@ -59,6 +59,50 @@
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"query_string\":{\"query\":\"(*run* && -runasppl) || *winlogon* || *osk*\",\"analyze_wildcard\":true}},\"filter\":[{\"meta\":{\"index\":\"winlogbeat-*\",\"type\":\"phrases\",\"key\":\"event_id\",\"value\":\"12, 13, 14\",\"params\":[\"12\",\"13\",\"14\"],\"negate\":false,\"disabled\":false,\"alias\":null},\"query\":{\"bool\":{\"should\":[{\"match_phrase\":{\"event_id\":\"12\"}},{\"match_phrase\":{\"event_id\":\"13\"}},{\"match_phrase\":{\"event_id\":\"14\"}}],\"minimum_should_match\":1}},\"$state\":{\"store\":\"appState\"}},{\"meta\":{\"negate\":false,\"index\":\"winlogbeat-*\",\"type\":\"phrase\",\"key\":\"log_name\",\"value\":\"Microsoft-Windows-Sysmon/Operational\",\"disabled\":false,\"alias\":null},\"query\":{\"match\":{\"log_name\":{\"query\":\"Microsoft-Windows-Sysmon/Operational\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AWm7ma_Co3ZX3wbZBS7a",
+    "_type": "search",
+    "_source": {
+      "title": "Remote Logons",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "event_data.TargetUserName",
+        "event_data.IpAddress",
+        "beat.name"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"match_all\":{}},\"filter\":[{\"meta\":{\"index\":\"winlogbeat-*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"event_id\",\"value\":\"4,624\"},\"query\":{\"match\":{\"event_id\":{\"query\":4624,\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}},{\"meta\":{\"index\":\"winlogbeat-*\",\"type\":\"phrases\",\"key\":\"event_data.LogonType\",\"value\":\"3, 10\",\"params\":[\"3\",\"10\"],\"negate\":false,\"disabled\":false,\"alias\":null},\"query\":{\"bool\":{\"should\":[{\"match_phrase\":{\"event_data.LogonType\":\"3\"}},{\"match_phrase\":{\"event_data.LogonType\":\"10\"}}],\"minimum_should_match\":1}},\"$state\":{\"store\":\"appState\"}},{\"query\":{\"regexp\":{\"event_data.TargetUserName\":\".*$\"}},\"meta\":{\"negate\":true,\"index\":\"winlogbeat-*\",\"disabled\":false,\"alias\":null,\"type\":\"custom\",\"key\":\"query\",\"value\":\"{\\\"regexp\\\":{\\\"event_data.TargetUserName\\\":\\\".*$\\\"}}\"},\"$state\":{\"store\":\"appState\"}},{\"meta\":{\"negate\":true,\"index\":\"winlogbeat-*\",\"type\":\"phrase\",\"key\":\"event_data.TargetUserName\",\"value\":\"ANONYMOUS LOGON\",\"disabled\":false,\"alias\":null},\"query\":{\"match\":{\"event_data.TargetUserName\":{\"query\":\"ANONYMOUS LOGON\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AWimkBK3cJsr2FYn2EIa",
+    "_type": "search",
+    "_source": {
+      "title": "Service/Task Creations",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "event_data.TaskName",
+        "event_data.ServiceName",
+        "event_data.ImagePath"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"winlogbeat-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"match_all\":{}},\"filter\":[{\"meta\":{\"index\":\"winlogbeat-*\",\"type\":\"phrases\",\"key\":\"event_id\",\"value\":\"4,697, 4,698, 7,045\",\"params\":[\"4697\",\"4698\",\"7045\"],\"negate\":false,\"disabled\":false,\"alias\":null},\"query\":{\"bool\":{\"should\":[{\"match_phrase\":{\"event_id\":\"4697\"}},{\"match_phrase\":{\"event_id\":\"4698\"}},{\"match_phrase\":{\"event_id\":\"7045\"}}],\"minimum_should_match\":1}},\"$state\":{\"store\":\"appState\"}}]}"
       }
     }
   },
