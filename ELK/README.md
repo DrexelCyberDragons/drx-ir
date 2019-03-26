@@ -3,11 +3,11 @@
 ```
 Openssl steps
 Generate a CA
-	1. Openssl genrsa –des3 –out rootCA.key 4096
-	2. Openssl req –x509 –new –nodes –key rootCA.key -sha256 –days 1024 –out rootCA.crt
-	3. Openssl genrsa –out CERTIFICATE.key 2048
-	4. Openssl req –new –key CERTIFICATE.key -out CERTIFICATE.csr -config <(cat request)
-	5. Openssl x509 –req –in CERTIFICATE.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial –out CERTIFICATE.crt -days 1024 –sha256 –extensions req_ext
+  1. Openssl genrsa –des3 –out rootCA.key 4096
+  2. Openssl req –x509 –new –nodes –key rootCA.key -sha256 –days 1024 –out rootCA.crt
+  3. Openssl genrsa –out CERTIFICATE.key 2048
+  4. Openssl req –new –key CERTIFICATE.key -out CERTIFICATE.csr -config <(cat request)
+  5. Openssl x509 –req –in CERTIFICATE.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial –out CERTIFICATE.crt -days 1024 –sha256 –extensions req_ext
 	
 Request file contents:
 [req]
@@ -118,9 +118,6 @@ output.elasticsearch:
 Documentation to add:
 - Saved Searches
 	- detail each query
-- Beat Config breakdown
+- Audit/Filebeat Config breakdown
 - Dashboard breakdown
 	- add screenshot
-- Elasticsearch config breakdown
-	- note: we are using a trial license, a license is required to utilize the authentication module
-- Kibana config breakdown
