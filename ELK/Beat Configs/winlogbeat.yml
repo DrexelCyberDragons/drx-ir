@@ -9,26 +9,23 @@ winlogbeat.event_logs:
 setup.template.settings:
   index.number_of_shards: 3
   
-#tags: ["test"]
+#tags: ['test']
 
 setup.kibana:
-  host: "https://<host>:<port>"
-  protocol: https
-  username: ""
-  password: ""
-  ssl.certificate_authorities: ["<path to root CA cert>"]
-  ssl.certificate: "<path to ssl cert>"
-  ssl.key: "<path to key>"
+  host: 'https://<host>:<port>'
+  username: ''
+  password: ''
+  ssl.certificate_authorities: ['<path to root CA cert>']
+  ssl.certificate: '<path to ssl cert>'
+  ssl.key: '<path to key>'
 
 output.elasticsearch:
-  hosts: ["https://<host>:<port>"]
-
-  protocol: "https"
-  username: ""
-  password: ""
-  ssl.certificate_authorities: ["<path to root CA cert>"]
-  ssl.certificate: "<path to ssl cert>"
-  ssl.key: "<path to key>"
+  hosts: ['https://<host>:<port>']
+  username: ''
+  password: ''
+  ssl.certificate_authorities: ['<path to root CA cert>']
+  ssl.certificate: '<path to ssl cert>'
+  ssl.key: '<path to key>'
   
 processors:
   - add_host_metadata: ~

@@ -7,7 +7,7 @@ Generate a CA
   2. openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1024 -out rootCA.crt
   3. openssl genrsa -out CERTIFICATE.key 2048
   4. openssl req -new -key CERTIFICATE.key -out CERTIFICATE.csr -config <(cat request)
-  5. openssl x509 -req -in CERTIFICATE.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out CERTIFICATE.crt -days 1024 -sha256 -extensions req_ext
+  5. openssl x509 -req -in CERTIFICATE.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out CERTIFICATE.crt -days 1024 -sha256 -extensions req_ext -extfile request
 	
 Request file contents:
 [req]
@@ -18,24 +18,25 @@ req_extensions = req_ext
 distinguished_name = dn
 
 [dn]
-C=US
-ST=Pennsylvania
-L=Philadelphia
-O=CyberDragons
-OU=LinuxTeam
-CN=LOGS
+C=AU
+ST=Some-State
+O=Internet Widgits Pty Ltd
+CN=HOSTNAME
 
 [req_ext]
 subjectAltName = @alt_names
 
 [alt_names]
 DNS.1=CERTIFICATE
-IP=xxx.xxx.xxx.xxx
+IP=x.x.x.x
+
 ```
 2. Copy CERTIFICATE.crt, CERTIFICATE.key, and rootCA.crt to the directory where elasticsearch.yml is located.
 - Most likely /etc/elasticsearch
 3. Edit elasticsearch.yml to include the SSL certificate information, enable X-Pack security, and set the X-Pack license to trial.
 ```
+network.host: ["_local_", "x.x.x.x"]
+
 xpack.security.enabled: true
 xpack.license.self_generated.type: trial
 
@@ -54,14 +55,16 @@ xpack.security:
 4. Restart Elasticsearch.
 5. Activate the trial license.
 ```bash
-curl -XPOST -u elastic:elastic_password 'http://<host>:<port>/_xpack/license/start_trial'
+curl -XPOST -k -u elastic:elastic_password 'https://<host>:<port>/_xpack/license/start_trial?acknowledge=true'
+curl -XPOST -k 'https://192.168.13.11:9200/_xpack/license/start_trial?acknowledge=true'
 ```
 6. Set passwords for default accounts.
 ```bash
-/usr/share/elasticsearch/bin/setup-passwords interactive
+/usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
 ```
 7. Edit kibana.yml to enable SSL and set the user and password to interact with elasticsearch.
 ```
+elasticsearch.hosts: ["https://localhost:9200"]
 elasticsearch.username: ""
 elasticsearch.password: ""
 
