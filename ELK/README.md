@@ -3,11 +3,11 @@
 ```
 Openssl steps
 Generate a CA
-  1. Openssl genrsa –des3 –out rootCA.key 4096
-  2. Openssl req –x509 –new –nodes –key rootCA.key -sha256 –days 1024 –out rootCA.crt
-  3. Openssl genrsa –out CERTIFICATE.key 2048
-  4. Openssl req –new –key CERTIFICATE.key -out CERTIFICATE.csr -config <(cat request)
-  5. Openssl x509 –req –in CERTIFICATE.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial –out CERTIFICATE.crt -days 1024 –sha256 –extensions req_ext
+  1. openssl genrsa -des3 -out rootCA.key 4096
+  2. openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1024 -out rootCA.crt
+  3. openssl genrsa -out CERTIFICATE.key 2048
+  4. openssl req -new -key CERTIFICATE.key -out CERTIFICATE.csr -config <(cat request)
+  5. openssl x509 -req -in CERTIFICATE.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out CERTIFICATE.crt -days 1024 -sha256 -extensions req_ext
 	
 Request file contents:
 [req]
@@ -89,11 +89,10 @@ winlogbeat.event_logs:
 ```
 
 ### Kibana Setup (only required for initial dashboard setup)
-Note: The user must have the 'kibana_user' role assigned for dashboard setup.
+Note: The user must have the 'kibana_user' role assigned for dashboard setup. Additionally, it must have permission to create a new index in elasticsearch.
 ```
 setup.kibana:
   host: "https://<host>:<port>"
-  protocol: https
   username: ""
   password: ""
   ssl.certificate_authorities: ["<path to root CA cert>"]
@@ -106,8 +105,6 @@ Note: The user must have the remote_monitoring_agent role assigned.
 ```
 output.elasticsearch:
   hosts: ["https://<host>:<port>"]
-
-  protocol: "https"
   username: ""
   password: ""
   ssl.certificate_authorities: ["<path to root CA cert>"]
