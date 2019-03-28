@@ -115,9 +115,21 @@ output.elasticsearch:
   ssl.key: "<path to key>"
 ```
 
+# Elasticsearch Queries
+Failed Logons: event ID 4625
+Log Cleared: event ID 1102
+Suspicious File Creates: event ID 11; File extensions such as exe, ps1, and dll
+Suspicious Network Connections: Sysmon event ID 3; Filter down to foreign unknown remote IPs
+Suspicious PowerShell: Sysmon event ID 1; Commandline includes rarely used switches such as no profile and base64 encoding
+Suspicious Processes: Sysmon event ID 1; Normally unused executables such as mshta and msbuild
+Sysmon Service Stopped: Sysmon event ID 4
+Umanaged PowerShell: Sysmon event ID 7; Looks for powershell dlls in non-powershell processes
+Registry Edits: Sysmon event IDs 12, 13, and 14; Looks for typical registry persistence mechanisms
+Service/Task Creations: event IDs 4697, 4698, and 7045; New service and task creations
+Remote Logons: event ID 4624; queries for logon types 3 and 10
+User Modifications: event IDs 4724, 4726, 4738, and 4720; looks for changes to users
+
 Documentation to add:
-- Saved Searches
-	- detail each query
 - Audit/Filebeat Config breakdown
 - Dashboard breakdown
 	- add screenshot
